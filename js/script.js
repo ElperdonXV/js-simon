@@ -39,6 +39,17 @@ setTimeout(function () {
     //svuoto il dom 
     lista.innerHTML = '';
 
+    //COUNTDOWN DI 30 SECONDI 
+    let seconds = 30;
+    const timer = setInterval(() => { 
+    console.log('primo interval', this);
+    if (seconds > 0) {
+    console.log('secondi timer', seconds);
+    seconds -= 1;
+    lista.innerHTML = `<h2>${seconds}</h2>`;
+    } else clearInterval(timer);
+    }, 1000);
+
     //imposto un secondo timer per far apparire il prompt 
     setTimeout(function () {
 
@@ -51,11 +62,11 @@ setTimeout(function () {
         //ciclo per far inserire i numeri all'utente 
         for (let index = 0; index < randomNumbers.length; index++) {
             
-            let number = parseInt(prompt('Inserisci il' + '' + (index+1) + '°' + '' + 'numero'));
+            let number = parseInt(prompt('Inserisci il' + ' ' + (index+1) + '°' + ' ' + 'numero'));
 
             //controllo che l'utente abbia inserito un numero 
             while (isNaN(number)) {
-                number = parseInt(prompt('Inserisci il' + '' + (index+1) + '°' + '' + 'numero'));
+                number = parseInt(prompt('Inserisci il' + ' ' + (index+1) + '°' + ' ' + 'numero'));
             }
             //arrivo quì solo se l'utente ha inserito un numero e pusho nell'array
             userNumbers.push(number);
@@ -65,7 +76,8 @@ setTimeout(function () {
                 risultato = risultato + 1;
             }
         }
-        //mostro all'utente i numeri che ha 
+        //mostro all'utente i numeri che ha indovinato
+        lista.innerHTML = '';
         lista.innerHTML = `<h2>Hai indovinato: ${risultato} numeri</h2>`;
-    }, 500);
-}, 30000);
+    }, 30500);
+}, 10000);
